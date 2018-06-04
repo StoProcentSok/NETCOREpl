@@ -9,7 +9,7 @@ namespace MistrzowieWynajmu.Models
     {
         public int Id { get; set; }
         public PropertyType Type { get; set; }
-        public String Descritpion { get; set; }
+        public String Description { get; set; }
         public int Rooms { get; set; }
         public int Area { get; set; }
         public bool Washer { get; set; }
