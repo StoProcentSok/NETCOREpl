@@ -14,7 +14,7 @@ namespace MistrzowieWynajmu.Models.Repository
         {
             _databaseContext = databaseContext;
         }
-        public List<Property> GetAll()
+        public List<Property> GetAllProperties()
         {
             return _databaseContext.Properties.ToList();
         }

@@ -20,11 +20,11 @@ namespace MistrzowieWynajmu.Controllers
             _propertyRepository = propertyRepository;
         }
 
-        [HttpGet("[action]")]
-        public IActionResult GetProperties()
-        {
-            return new JsonResult(_propertyRepository.GetAll());
-        }
+        //[HttpGet("[action]")]
+        //public IActionResult GetProperties()
+        //{
+        //    return new JsonResult(_propertyRepository.GetAll());
+        //}
 
         [HttpPost("[action]")]
         public IActionResult AddProperty()
