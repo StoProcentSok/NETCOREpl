@@ -9,28 +9,22 @@ namespace MistrzowieWynajmu.Controllers
 {
     public class HomeController : Controller
     {
-        //[Route("Home/Metoda")]
-        public IActionResult Index(string name)
+        [HttpGet]
+        public IActionResult Index()
         {
-            string html = "<form method = 'post' action = 'home/goodbye?name=ziomek'>" +
-                "<input type = \"text\" name = \"name\" />" +
-                "<input type = 'submit' value = 'Greet me mate!' />" +
-                "</form>";
-
-            
-            return Content(html, "text/html");
-            //return View();
+            return View();
         }
-
+        
         public IActionResult Error()
         {
             ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
             return View();
         }
 
-        public IActionResult Goodbye()
-        {
-            return Content("<h1>Goodbye!<h1>", "text/html");
-        }
+       
+
+       
+
+        
     }
 }

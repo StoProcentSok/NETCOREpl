@@ -10,13 +10,21 @@ namespace MistrzowieWynajmu.Models.Repository
     public class PropertyRepository : IPropertyRepository
     {
         private readonly DatabaseContext _databaseContext;
+
         public PropertyRepository(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
+
         public List<Property> GetAllProperties()
         {
             return _databaseContext.Properties.ToList();
+        }
+      
+
+        public void AddProperty(Property property)
+        {
+            _databaseContext.Properties.Add(property);
         }
 
         public Property GetProperty(int propertyId)
@@ -24,9 +32,16 @@ namespace MistrzowieWynajmu.Models.Repository
             return _databaseContext.Properties.Where(x => x.Id == propertyId).FirstOrDefault();
         }
 
-        public Property NotFound(Property newProperty)
+        public void EditProperty(Property property)
         {
-            return null;
+            throw new NotImplementedException();
         }
+
+        public void DeleteProperty(int propertyId)
+        {
+            //_databaseContext.Properties.(x => x.propertyId == propertyId);
+        }
+
+        
     }
 }

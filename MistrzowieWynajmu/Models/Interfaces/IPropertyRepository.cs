@@ -8,8 +8,9 @@ namespace MistrzowieWynajmu.Models.Interfaces
     public interface IPropertyRepository
     {
         List<Property> GetAllProperties();
+        void AddProperty(Property property);
         Property GetProperty(int propertyId);
-        
-        Property NotFound(Property newProperty);
+        void EditProperty(Property property);
+        void DeleteProperty(int propertyId);
     }
 }
