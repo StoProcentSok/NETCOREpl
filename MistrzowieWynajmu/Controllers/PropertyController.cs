@@ -21,9 +21,9 @@ namespace MistrzowieWynajmu.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult AddProperty()
+        public IActionResult GetProperties()
         {
-           return new JsonResult(_propertyRepository.);
+           return new JsonResult(_propertyRepository.GetAllProperties());
         }
 
 

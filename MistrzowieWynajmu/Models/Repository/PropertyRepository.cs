@@ -20,28 +20,79 @@ namespace MistrzowieWynajmu.Models.Repository
         {
             return _databaseContext.Properties.ToList();
         }
-      
-
-        public void AddProperty(Property property)
-        {
-            _databaseContext.Properties.Add(property);
-        }
 
         public Property GetProperty(int propertyId)
         {
-            return _databaseContext.Properties.Where(x => x.Id == propertyId).FirstOrDefault();
+            if (propertyId <= 0)
+            {
+                throw new Exception("PropertyId cannot be smaller or equal than 0");
+            }
+            return _databaseContext.Properties.
+                Where(x => x.Id == propertyId).
+                FirstOrDefault();
         }
 
-        public void EditProperty(Property property)
+        public void DeleteProperty(Property property, Address address, Owner owner)
         {
-            throw new NotImplementedException();
+            if(property == null)
+            {
+                throw new Exception("Property object cannot be null.");
+            }
+            if(address == null)
+            {
+                throw new Exception("Address object cannot be null.");
+            }
+            if(owner == null)
+            {
+                throw new Exception("Owner object cannot be null.");
+            }
+            _databaseContext.Properties.Remove(property);
+            _databaseContext.SaveChanges();
+
+            _databaseContext.Addresses.Remove(address);
+            _databaseContext.SaveChanges();
+
+            _databaseContext.Owners.Remove(owner);
+            _databaseContext.SaveChanges();
+           
         }
 
-        public void DeleteProperty(int propertyId)
+        public int AddProperty(Property property, Address address, Owner owner)
         {
-            //_databaseContext.Properties.(x => x.propertyId == propertyId);
+            if(property == null)
+            {
+                throw new Exception("Property object object cannot be null.");
+            }
+            if(address == null)
+            {
+                throw new Exception("Address object cannot be null.");
+            }
+            if(owner == null)
+            {
+                throw new Exception("Owner object cannot be null.");
+            }
+
+            property.Id = 0;
+            property.Owner = owner;
+            property.OwnerId = owner.OwnerId;
+
+            property.Address = address;
+            property.AddressId = address.AddressId;
+
+            _databaseContext.Properties.Add(property);
+            _databaseContext.SaveChanges();
+            return property.Id;
         }
 
-        
+        public int EditProperty(Property property)
+        {
+            if(property == null)
+            {
+                throw new Exception("Property object cannot be null.");
+            }
+
+            _databaseContext.Properties.Update(property);
+            return property.Id;
+        }
     }
 }

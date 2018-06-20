@@ -8,9 +8,13 @@ namespace MistrzowieWynajmu.Models.Interfaces
     public interface IPropertyRepository
     {
         List<Property> GetAllProperties();
-        void AddProperty(Property property);
+
+        int AddProperty(Property property, Address address, Owner owner);
+
         Property GetProperty(int propertyId);
-        void EditProperty(Property property);
-        void DeleteProperty(int propertyId);
+
+        int EditProperty(Property property);
+
+        void DeleteProperty(Property property, Address address, Owner owner);
     }
 }
