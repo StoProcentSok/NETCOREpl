@@ -5,16 +5,12 @@ using System.Threading.Tasks;
 
 namespace MistrzowieWynajmu.Models.Interfaces
 {
-    public interface IPropertyRepository
-    {
-        List<Property> GetAllProperties();
-
-        int AddProperty(Property property, Address address, Owner owner);
-
-        Property GetProperty(int propertyId);
-
-        int EditProperty(Property property);
-
-        void DeleteProperty(Property property, Address address, Owner owner);
-    }
+	public interface IPropertyRepository
+	{
+		List<Property> GetAllProperties();
+		Property GetProperty(int propertyId);
+		int AddProperty(Property Property, Address address, Owner owner);
+		int UpdateProperty(Property property);
+		void DeleteProperty(Property property, Address address, Owner owner);
+	}
 }
