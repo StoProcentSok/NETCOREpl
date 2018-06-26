@@ -22,13 +22,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\property\services\PropertiesService.ts" />
     <None Remove="ClientApp\app\models\property.ts" />
-    <None Remove="ClientApp\app\services\property-backend.service.ts" />
+    <None Remove="ClientApp\app\services\Http-Properties-Backed.service.ts" />
+    <None Remove="ClientApp\app\services\properties-backend.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\property\services\PropertiesService.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\property.ts" />
-    <TypeScriptCompile Include="ClientApp\app\services\property-backend.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\Http-Properties-Backed.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\properties-backend.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
